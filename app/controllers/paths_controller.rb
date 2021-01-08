@@ -10,6 +10,16 @@ class PathsController < ApplicationController
 
   # GET /paths/1
   def show
+    @path = Path.where(id: params[:id])
+
+    render json: @path
+  end
+
+  # GET /paths/random
+  def random
+    @paths = Path.all
+    random_index = @paths.count - 1
+    @path = Path.where(id: rand(0..random_index))
     render json: @path
   end
 
