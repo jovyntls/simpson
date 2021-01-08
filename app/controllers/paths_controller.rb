@@ -18,8 +18,8 @@ class PathsController < ApplicationController
   # GET /paths/random
   def random
     @paths = Path.all
-    random_index = @paths.count - 1
-    @path = Path.where(id: rand(0..random_index))
+    random_index = @paths.count
+    @path = Path.where(id: rand(1..random_index))
     render json: @path
   end
 
