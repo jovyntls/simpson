@@ -34,6 +34,16 @@ class PathsController < ApplicationController
     end
   end
 
+  # PATCH/PUT /paths/
+  def edit
+    @path = Path.find_by(mod1: path_params[:mod1], mod2: path_params[:mod2])
+    if @path.update(path_params)
+      render json: @path
+    else
+      render json: @path.errors, status: :unprocessable_entity
+    end
+  end
+
   # PATCH/PUT /paths/1
   def update
     if @path.update(path_params)
